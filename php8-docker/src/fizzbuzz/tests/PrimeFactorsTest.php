@@ -24,4 +24,13 @@ class PrimeFactorsTest extends TestCase
 
         $this->assertEquals([], $result);
     }
+    /**
+     * @test
+     */
+    public function number_2_has_1_factor_that_is_2()
+    {
+        $result = $this->primeFactor->primeFactors(2);
+
+        $this->assertEquals(2, $result[0]);
+    }
 }

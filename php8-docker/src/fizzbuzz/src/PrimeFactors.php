@@ -6,13 +6,13 @@ class PrimeFactors
 {
     function primeFactors(int $numero): array{
         $primeFactorsList = array();
-        $divisor = 1;
-        while($numero != 1){
-            if(($numero%$divisor) == 0){
-                $primeFactorsList = array_push($primeFactorsList,$numero);
+        $divisor = 2;
+        while(($numero != 1) and ($divisor == $numero)){
+            if (($numero % $divisor) == 0) {
+                array_push($primeFactorsList,"$divisor");
                 $divisor = 1;
                 $numero /= $divisor;
-            }else{
+            } else {
                 $divisor++;
             }
         }
