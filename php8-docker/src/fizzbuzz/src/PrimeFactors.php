@@ -4,7 +4,7 @@ namespace Deg540\PHPTestingBoilerplate;
 
 class PrimeFactors
 {
-    function primeFactors(int $numero): array{
+    function calculatePrimeFactors(int $numero): array{
         $primeFactorsList = array();
         $divisor = 2;
         while(($numero != 1) and ($divisor == $numero)){
