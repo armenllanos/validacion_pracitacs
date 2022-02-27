@@ -25,4 +25,14 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add("1");
         $this->assertEquals(1, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_2_ones_returns_2()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add("1,1");
+        $this->assertEquals(2, $result);
+    }
+
 }
