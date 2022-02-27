@@ -18,6 +18,13 @@ class StringCalculator
                 $valorSuma += floatval($trozo);
             }
             return $valorSuma;
+        }elseif (str_contains($numerosParaSumar,'\n') ){
+            $numerosTrozos = explode('\n',$numerosParaSumar);
+            $valorSuma = 0;
+            foreach ($numerosTrozos as $trozo){
+                $valorSuma += floatval($trozo);
+            }
+            return $valorSuma;
         }else{
             return intval($numerosParaSumar);
         }
