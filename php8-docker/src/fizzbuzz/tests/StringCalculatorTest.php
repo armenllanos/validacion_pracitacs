@@ -52,5 +52,15 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add("1.5,1.5");
         $this->assertEquals(3, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_3_ones_returns_3()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add("1,1,1");
+        $this->assertEquals(3, $result);
+    }
+    
 
 }

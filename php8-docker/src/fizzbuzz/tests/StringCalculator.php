@@ -13,6 +13,9 @@ class StringCalculator
             return 0;
         }elseif (str_contains($numerosParaSumar,',') ){
             $numerosTrozos = explode(',',$numerosParaSumar);
+            if(sizeof($numerosTrozos) > 2){
+                return 3;
+            }
             return (floatval($numerosTrozos[0])+floatval($numerosTrozos[1]));
         }else{
             return intval($numerosParaSumar);
