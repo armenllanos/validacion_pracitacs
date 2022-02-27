@@ -16,4 +16,13 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add("");
         $this->assertEquals(0, $result);
     }
+    /**
+     * @test
+     */
+    public function single_number_string_returns_same_value()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add("1");
+        $this->assertEquals(1, $result);
+    }
 }
