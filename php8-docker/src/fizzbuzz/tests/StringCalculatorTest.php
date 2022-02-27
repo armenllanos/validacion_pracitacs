@@ -70,5 +70,14 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add("2,2,2");
         $this->assertEquals(6, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_2_twos_and_1_one_returns_5()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add("2,2,1");
+        $this->assertEquals(5, $result);
+    }
 
 }

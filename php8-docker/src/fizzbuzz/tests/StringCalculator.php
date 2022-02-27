@@ -7,16 +7,17 @@ use function PHPUnit\Framework\stringContains;
 class StringCalculator
 {
 
-    public function add(string $numerosParaSumar): int
+    public function add(string $numerosParaSumar): float
     {
         if(strlen($numerosParaSumar) == 0) {
             return 0;
         }elseif (str_contains($numerosParaSumar,',') ){
             $numerosTrozos = explode(',',$numerosParaSumar);
-            if(sizeof($numerosTrozos) > 2){
-                return floatval($numerosTrozos[0])*3;
+            $valorSuma = 0;
+            foreach ($numerosTrozos as $trozo){
+                $valorSuma += floatval($trozo);
             }
-            return (floatval($numerosTrozos[0])+floatval($numerosTrozos[1]));
+            return $valorSuma;
         }else{
             return intval($numerosParaSumar);
         }
