@@ -88,4 +88,13 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add('2\n2');
         $this->assertEquals(4, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_two_one_and_three_and_newline_separator_returns_6()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add('1\n2,3');
+        $this->assertEquals(6, $result);
+    }
 }
