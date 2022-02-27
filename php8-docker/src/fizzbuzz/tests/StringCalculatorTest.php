@@ -43,5 +43,14 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add("2,2");
         $this->assertEquals(4, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_2_ones_dot_five_returns_3()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add("1.5,1.5");
+        $this->assertEquals(3, $result);
+    }
 
 }
