@@ -8,7 +8,7 @@ namespace Deg540\PHPTestingBoilerplate\Test;
 class StringCalculator
 {
 
-    public function add(string $numerosParaSumar): float
+    public function add(string $numerosParaSumar): string
     {
         if(strlen($numerosParaSumar) == 0) {
             return 0;
@@ -17,11 +17,14 @@ class StringCalculator
             $numerosTrozos = explode(',',$numerosParaSumar);
             $valorSuma = 0;
             foreach ($numerosTrozos as $trozo){
+                if(strlen($trozo) == 0){
+                    return 'Number expected but \n found';
+                }
                 $valorSuma += floatval($trozo);
             }
             return $valorSuma;
         }else{
-            return intval($numerosParaSumar);
+            return $numerosParaSumar;
         }
 
     }

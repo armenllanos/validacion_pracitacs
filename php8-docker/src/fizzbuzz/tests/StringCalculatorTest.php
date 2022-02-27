@@ -97,4 +97,13 @@ class StringCalculatorTest extends TestCase
         $result = $stringCalculator->add('1\n2,3');
         $this->assertEquals(6, $result);
     }
+    /**
+     * @test
+     */
+    public function string_of_1N3_returns_error()
+    {
+        $stringCalculator = new StringCalculator();
+        $result = $stringCalculator->add('1,\n3');
+        $this->assertEquals('Number expected but \n found', $result);
+    }
 }
