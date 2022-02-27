@@ -12,7 +12,8 @@ class StringCalculator
         if(strlen($numerosParaSumar) == 0) {
             return 0;
         }elseif (stringContains($numerosParaSumar,',') ){
-            return 2;
+            $numerosTrozos = explode(',',$numerosParaSumar);
+            return (intval($numerosTrozos[0])+intval($numerosTrozos[1]));
         }else{
             return intval($numerosParaSumar);
         }
