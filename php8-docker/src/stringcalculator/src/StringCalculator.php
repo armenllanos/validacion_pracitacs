@@ -23,6 +23,8 @@ class StringCalculator
             foreach ($numerosSeparados as $numero){
                 if(strlen($numero) == 0){
                     return 'Number expected but \n found';
+                }elseif($numero === 1){
+                    return "Number expected but $numero + found";
                 }
             }
             return array_sum($numerosSeparados);

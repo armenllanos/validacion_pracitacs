@@ -114,10 +114,19 @@ class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function string_different_separator_one_semicolon_one_returns_2()
+    public function string_different_separator_one_semicolon_two_returns_3()
     {
         $result = $this->stringCalculator->add('//;\n1;2');
         $this->assertEquals(3, $result);
     }
+    /**
+     * @test
+     */
+    public function string_different_separator_one_aep_one_returns_2()
+    {
+        $result = $this->stringCalculator->add('//aep\n1aep1');
+        $this->assertEquals(2, $result);
+    }
+
 
 }
