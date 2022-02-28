@@ -8,6 +8,12 @@ use PHPUnit\Framework\TestCase;
 
 class StringCalculatorTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->stringCalculator = new StringCalculator();
+    }
+
     /**
      * @test
      */
@@ -22,8 +28,7 @@ class StringCalculatorTest extends TestCase
      */
     public function single_number_string_returns_same_value()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("1");
+        $result = $this->stringCalculator->add("1");
         $this->assertEquals(1, $result);
     }
     /**
@@ -31,8 +36,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_2_ones_returns_2()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("1,1");
+        $result = $this->stringCalculator->add("1,1");
         $this->assertEquals(2, $result);
     }
     /**
@@ -40,8 +44,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_2_twos_returns_4()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("2,2");
+        $result = $this->stringCalculator->add("2,2");
         $this->assertEquals(4, $result);
     }
     /**
@@ -49,8 +52,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_2_ones_dot_five_returns_3()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("1.5,1.5");
+        $result = $this->stringCalculator->add("1.5,1.5");
         $this->assertEquals(3, $result);
     }
     /**
@@ -58,8 +60,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_3_ones_returns_3()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("1,1,1");
+        $result = $this->stringCalculator->add("1,1,1");
         $this->assertEquals(3, $result);
     }
     /**
@@ -67,8 +68,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_3_twos_returns_6()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("2,2,2");
+        $result =$this->stringCalculator->add("2,2,2");
         $this->assertEquals(6, $result);
     }
     /**
@@ -76,8 +76,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_2_twos_and_1_one_returns_5()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add("2,2,1");
+        $result = $this->stringCalculator->add("2,2,1");
         $this->assertEquals(5, $result);
     }
     /**
@@ -85,8 +84,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_2_twos_and_1_newline_separator_returns_4()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add('2\n2');
+        $result = $this->stringCalculator->add('2\n2');
         $this->assertEquals(4, $result);
     }
     /**
@@ -94,8 +92,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_two_one_and_three_and_newline_separator_returns_6()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add('1\n2,3');
+        $result = $this->stringCalculator->add('1\n2,3');
         $this->assertEquals(6, $result);
     }
     /**
@@ -103,8 +100,7 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_1N3_returns_error()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add('1,\n3');
+        $result = $this->stringCalculator->add('1,\n3');
         $this->assertEquals('Number expected but \n found', $result);
     }
     /**
@@ -112,8 +108,8 @@ class StringCalculatorTest extends TestCase
      */
     public function string_of_1_coma_nothing_returns_incomplete_error()
     {
-        $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add('1,');
+        $result = $this->stringCalculator->add('1,');
         $this->assertEquals('Number expected but FOF found', $result);
     }
+    
 }
