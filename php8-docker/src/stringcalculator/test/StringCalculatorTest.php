@@ -135,6 +135,13 @@ class StringCalculatorTest extends TestCase
         $result = $this->stringCalculator->add('//aep\n1aep1,2');
         $this->assertEquals("Number expected but , found", $result);
     }
-
+    /**
+     * @test
+     */
+    public function string_negative_number_returns_error()
+    {
+        $result = $this->stringCalculator->add('-1,-2');
+        $this->assertEquals("Negative not allowed: -1,-2,", $result);
+    }
 
 }

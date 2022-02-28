@@ -26,10 +26,15 @@ class StringCalculator
                 }if(strlen(floatval($numero)) != strlen($numero)){
                     $separadorDistinto = $this->aislarSeparador($numero);
                     return "Number expected but $separadorDistinto found";
+                }if(floatval($numero) < 0){
+                    return $this->errorNumeroNegativo($numerosSeparados);
                 }
             }
             return array_sum($numerosSeparados);
         }else{
+            if(floatval($numerosParaSumar) < 0){
+                return $this->errorNumeroNegativo(array($numerosParaSumar));
+            }
             return $numerosParaSumar;
         }
 
@@ -49,5 +54,22 @@ class StringCalculator
     private function aislarSeparador(string $numero): string
     {
         return substr($numero,1,1);
+    }
+
+    private function errorNumeroNegativo(array $numerosSeparados): string
+    {
+        $numerosNegativos =  array();
+        foreach ($numerosSeparados as $numero){
+            if(floatval($numero)<0){
+                array_push($numerosNegativos,$numero);
+            }
+        }
+        $error = "Negative not allowed: ";
+        foreach ($numerosNegativos as $negativo){
+            $error .= strval($negativo);
+            $error .= ',';
+        }
+        return $error;
+
     }
 }
