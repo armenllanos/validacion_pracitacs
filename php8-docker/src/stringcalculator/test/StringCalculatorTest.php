@@ -34,14 +34,6 @@ class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function string_of_2_ones_returns_2()
-    {
-        $result = $this->stringCalculator->add("1,1");
-        $this->assertEquals(2, $result);
-    }
-    /**
-     * @test
-     */
     public function string_of_2_twos_returns_4()
     {
         $result = $this->stringCalculator->add("2,2");
@@ -111,5 +103,21 @@ class StringCalculatorTest extends TestCase
         $result = $this->stringCalculator->add('1,');
         $this->assertEquals('Number expected but FOF found', $result);
     }
-    
+    /**
+     * @test
+     */
+    public function string_semicolon_is_separated_correctly()
+    {
+        $result = $this->stringCalculator->newCustomSeparator('//;\n');
+        $this->assertEquals(';', $result);
+    }
+    /**
+     * @test
+     */
+    public function string_different_separator_one_semicolon_one_returns_2()
+    {
+        $result = $this->stringCalculator->add('//;\n1;2');
+        $this->assertEquals(3, $result);
+    }
+
 }
