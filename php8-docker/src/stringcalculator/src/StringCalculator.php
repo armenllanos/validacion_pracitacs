@@ -4,7 +4,7 @@ namespace Deg540\PHPTestingBoilerplate;
 
 class StringCalculator
 {
-
+    public string $errores = '';
     public function add(string $numerosParaSumar): string
     {
         $separator = ',';
@@ -17,18 +17,9 @@ class StringCalculator
         }elseif (str_contains($numerosParaSumar,$separator) or (str_contains($numerosParaSumar,'\n'))){
             $numerosParaSumar = str_replace('\n',$separator,$numerosParaSumar);
             $numerosSeparados = explode($separator,$numerosParaSumar);
-            if(strlen($numerosSeparados[sizeof($numerosSeparados)-1]) == 0){
-                return 'Number expected but FOF found';
-            }
-            foreach ($numerosSeparados as $numero){
-                if(strlen($numero) == 0){
-                    return 'Number expected but \n found';
-                }if(strlen(floatval($numero)) != strlen($numero)){
-                    $separadorDistinto = $this->aislarSeparador($numero);
-                    return "Number expected but $separadorDistinto found";
-                }if(floatval($numero) < 0){
-                    return $this->errorNumeroNegativo($numerosSeparados);
-                }
+            $this->tieneErrores($numerosSeparados);
+            if(strlen($this->errores) != 0) {
+                return $this->errores;
             }
             return array_sum($numerosSeparados);
         }else{
@@ -72,4 +63,32 @@ class StringCalculator
         return $error;
 
     }
+
+    private function tieneErrores(array $numerosSeparados)
+    {
+        if(strlen($numerosSeparados[sizeof($numerosSeparados)-1]) == 0){
+            $this->errores .= 'Number expected but FOF found,';
+        }
+        for ($index=0; $index<sizeof($numerosSeparados); $index++) {//ejeplo de un for, inicio, final, recorrido
+            if(strlen($numerosSeparados[$index]) == 0){
+                if($index != sizeof($numerosSeparados)-1){
+                    $this->errores .= 'Number expected but \n found,';
+                }
+            }if(strlen(floatval($numerosSeparados[$index])) != strlen($numerosSeparados[$index])){
+                if(strlen($numerosSeparados[$index]) != 0) {
+                    $separadorDistinto = $this->aislarSeparador($numerosSeparados[$index]);
+                    $this->errores .= "Number expected but $separadorDistinto found,";
+                }
+            }
+        }
+        foreach ($numerosSeparados as $separado){
+            if(floatval($separado) < 0){
+                $this->errores .= $this->errorNumeroNegativo($numerosSeparados);
+                break;
+            }
+        }
+
+    }
+
+
 }

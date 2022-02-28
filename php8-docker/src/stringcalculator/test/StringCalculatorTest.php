@@ -93,7 +93,7 @@ class StringCalculatorTest extends TestCase
     public function string_of_1N3_returns_error()
     {
         $result = $this->stringCalculator->add('1,\n3');
-        $this->assertEquals('Number expected but \n found', $result);
+        $this->assertEquals('Number expected but \n found,', $result);
     }
     /**
      * @test
@@ -101,7 +101,7 @@ class StringCalculatorTest extends TestCase
     public function string_of_1_coma_nothing_returns_incomplete_error()
     {
         $result = $this->stringCalculator->add('1,');
-        $this->assertEquals('Number expected but FOF found', $result);
+        $this->assertEquals('Number expected but FOF found,', $result);
     }
     /**
      * @test
@@ -133,7 +133,7 @@ class StringCalculatorTest extends TestCase
     public function string_multiple_different_separators_one_aep_one_returns_error()
     {
         $result = $this->stringCalculator->add('//aep\n1aep1,2');
-        $this->assertEquals("Number expected but , found", $result);
+        $this->assertEquals("Number expected but , found,", $result);
     }
     /**
      * @test
@@ -142,6 +142,14 @@ class StringCalculatorTest extends TestCase
     {
         $result = $this->stringCalculator->add('-1,-2');
         $this->assertEquals("Negative not allowed: -1,-2,", $result);
+    }
+    /**
+     * @test
+     */
+    public function string_negative_number_and_incomplete_returns_double_error()
+    {
+        $result = $this->stringCalculator->add('-1,-2,');
+        $this->assertEquals("Number expected but FOF found,Negative not allowed: -1,-2,", $result);
     }
 
 }
