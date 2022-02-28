@@ -23,8 +23,9 @@ class StringCalculator
             foreach ($numerosSeparados as $numero){
                 if(strlen($numero) == 0){
                     return 'Number expected but \n found';
-                }elseif($numero === 1){
-                    return "Number expected but $numero + found";
+                }if(strlen(floatval($numero)) != strlen($numero)){
+                    $separadorDistinto = $this->aislarSeparador($numero);
+                    return "Number expected but $separadorDistinto found";
                 }
             }
             return array_sum($numerosSeparados);
@@ -43,5 +44,10 @@ class StringCalculator
             $nuevoSeparador =  substr($auxString,0,stripos($auxString,'\n'));
         }
         return $nuevoSeparador;
+    }
+
+    private function aislarSeparador(string $numero): string
+    {
+        return substr($numero,1,1);
     }
 }

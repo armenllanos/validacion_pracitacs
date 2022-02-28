@@ -127,6 +127,14 @@ class StringCalculatorTest extends TestCase
         $result = $this->stringCalculator->add('//aep\n1aep1');
         $this->assertEquals(2, $result);
     }
+    /**
+     * @test
+     */
+    public function string_multiple_different_separators_one_aep_one_returns_error()
+    {
+        $result = $this->stringCalculator->add('//aep\n1aep1,2');
+        $this->assertEquals("Number expected but , found", $result);
+    }
 
 
 }
