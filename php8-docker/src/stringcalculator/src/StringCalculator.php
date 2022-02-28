@@ -1,9 +1,6 @@
 <?php
 
-namespace Deg540\PHPTestingBoilerplate\Test;
-
-
-
+namespace Deg540\PHPTestingBoilerplate;
 
 class StringCalculator
 {
@@ -14,18 +11,16 @@ class StringCalculator
             return 0;
         }elseif (str_contains($numerosParaSumar,',') or (str_contains($numerosParaSumar,'\n'))){
             $numerosParaSumar = str_replace('\n',',',$numerosParaSumar);
-            $numerosTrozos = explode(',',$numerosParaSumar);
-            $valorSuma = 0;
-            if(strlen($numerosTrozos[sizeof($numerosTrozos)-1]) == 0){
+            $numerosSeparados = explode(',',$numerosParaSumar);
+            if(strlen($numerosSeparados[sizeof($numerosSeparados)-1]) == 0){
                 return 'Number expected but FOF found';
             }
-            foreach ($numerosTrozos as $trozo){
-                if(strlen($trozo) == 0){
+            foreach ($numerosSeparados as $numero){
+                if(strlen($numero) == 0){
                     return 'Number expected but \n found';
                 }
-                $valorSuma += floatval($trozo);
             }
-            return $valorSuma;
+            return array_sum($numerosSeparados);
         }else{
             return $numerosParaSumar;
         }

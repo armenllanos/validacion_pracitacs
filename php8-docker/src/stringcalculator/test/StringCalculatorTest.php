@@ -2,7 +2,8 @@
 
 namespace Deg540\PHPTestingBoilerplate\Test;
 
-use Deg540\PHPTestingBoilerplate\Test\StringCalculatorTest;
+
+use Deg540\PHPTestingBoilerplate\StringCalculator;
 use PHPUnit\Framework\TestCase;
 
 class StringCalculatorTest extends TestCase
@@ -109,10 +110,10 @@ class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function string_of_1_3_coma_nothing_returns_incomplete_error()
+    public function string_of_1_coma_nothing_returns_incomplete_error()
     {
         $stringCalculator = new StringCalculator();
-        $result = $stringCalculator->add('1,3,');
+        $result = $stringCalculator->add('1,');
         $this->assertEquals('Number expected but FOF found', $result);
     }
 }

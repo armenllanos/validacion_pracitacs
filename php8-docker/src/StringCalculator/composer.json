@@ -17,7 +17,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Deg540\\PHPTestingBoilerplate\\Test\\": "tests/"
+            "Deg540\\PHPTestingBoilerplate\\Test\\": "test/"
         }
     },
     "config": {
