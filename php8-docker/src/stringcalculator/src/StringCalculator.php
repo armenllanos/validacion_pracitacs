@@ -69,7 +69,7 @@ class StringCalculator
         if(strlen($numerosSeparados[sizeof($numerosSeparados)-1]) == 0){
             $this->errores .= 'Number expected but FOF found,';
         }
-        for ($index=0; $index<sizeof($numerosSeparados); $index++) {//ejeplo de un for, inicio, final, recorrido
+        for ($index=0; $index<sizeof($numerosSeparados); $index++) {
             if(strlen($numerosSeparados[$index]) == 0){
                 if($index != sizeof($numerosSeparados)-1){
                     $this->errores .= 'Number expected but \n found,';
